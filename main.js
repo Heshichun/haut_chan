@@ -114,6 +114,8 @@ var styles = {
 	
 	'Yotsuba B' : '',
 	'Yotsuba' : '/stylesheets/yotsuba.css',
+	'Dark' : '/stylesheets/dark.css',
+	'Futaba' : '/stylesheets/futaba+vichan.css',
 	
 };
 

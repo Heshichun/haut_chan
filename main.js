@@ -109,13 +109,13 @@ function alert(a, do_confirm, confirm_ok_action, confirm_cancel_action) {
 var saved = {};
 
 
-var selectedstyle = 'Yotsuba B';
+var selectedstyle = 'Futaba';
 var styles = {
 	
 	'Yotsuba B' : '',
 	'Yotsuba' : '/stylesheets/yotsuba.css',
+	'Futaba' : '/stylesheets/futaba.css',
 	'Dark' : '/stylesheets/dark.css',
-	'Futaba' : '/stylesheets/futaba+vichan.css',
 	
 };
 
@@ -125,7 +125,11 @@ if (typeof board_name === 'undefined') {
 
 function changeStyle(styleName, link) {
 	
-			localStorage.stylesheet = styleName;
+	
+		if (board_name) {
+			stylesheet_choices[board_name] = styleName;
+			localStorage.board_stylesheets = JSON.stringify(stylesheet_choices);
+		}
 		
 	
 	if (!document.getElementById('stylesheet')) {
@@ -158,9 +162,15 @@ function changeStyle(styleName, link) {
 
 
 	
-	if (localStorage.stylesheet) {
+	
+	if (!localStorage.board_stylesheets) {
+		localStorage.board_stylesheets = '{}';
+	}
+	
+	var stylesheet_choices = JSON.parse(localStorage.board_stylesheets);
+	if (board_name && stylesheet_choices[board_name]) {
 		for (var styleName in styles) {
-			if (styleName == localStorage.stylesheet) {
+			if (styleName == stylesheet_choices[board_name]) {
 				changeStyle(styleName);
 				break;
 			}
@@ -337,9 +347,6 @@ function init() {
 	init_stylechooser();
 
 		
-		if (document.forms.postcontrols) {
-		document.forms.postcontrols.password.value = localStorage.password;
-	}
 		
 	
 	if (window.location.hash.indexOf('q') != 1 && window.location.hash.substring(1))

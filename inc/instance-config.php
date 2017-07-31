@@ -43,19 +43,19 @@
 	$config['stylesheets']['Yotsuba'] = 'yotsuba.css';
 	$config['stylesheets']['Futaba'] = 'futaba.css';
 	$config['stylesheets']['Dark'] = 'dark.css';
-	$config['stylesheets']['futaba+vichan'] = 'futaba+vichan.css';
 
 	
 	$config['default_stylesheet'] = array('Futaba', $config['stylesheets']['Futaba']);
 	$config['stylesheets_board'] = true;
 	
 	$config['boards'] = array(
-	array('ch', 'it'),
+	array('综合','吐槽','学院综合','二手','游戏'),
 	// 	array('c', 'd', 'e', 'f', 'g'),
 	// 	array('h', 'i', 'j'),
 	// 	array('k', array('l', 'm')),
 	// 	array('status' => 'http://status.example.org/')
 	);
+	
 	$config['page_nav_top'] = true;
 	$config['debug'] = false;
 	$config['allow_delete'] = false;
